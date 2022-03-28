@@ -1,24 +1,62 @@
-# README
+# rBudget
+![](https://img.shields.io/badge/Microverse-blueviolet) ![](https://img.shields.io/badge/Ruby-red) ![](https://img.shields.io/badge/Rails-critical)
+> Mobile web application built with Rails where you can manage your budget by allowing users to:
+that allows the user to:
+> - Register and log in, so that the data is private to them.
+> - Introduce new transactions associated with a category.
+> - See the money spent on each category.
+## Built With
+- Ruby
+- Rails
+- Tailwind
+## Getting Started
+To get a local copy up and running follow these simple steps.
+### Prerequisites
+- Having a modern internet browser: I.E. Chrome, Edge, Safari, Firefox.
+### Setup
+- Go into the main page for this project: https://github.com/lu-jim/rbudget
+- Click the green Code button next to the About section.
+- Select the then click the 📋 button.
+### Install
+- Open your console and change the current working directory into the destination for this project.
+- Type `git clone`, and then paste the URL copied in the Setup section.
+- Type Enter and then enter `cd rbudget` to enter into the project directory.
+- Run `bundler install` to install the required dependencies
+- Run `rails db:create` and `rails db:migrate` to run the proper migrations and generate the app schema
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Run
+```sh
+rails db:create # create database
+rails db:migrate # migrate tables
+rails db:seed # load all data in database from seed.rb
 
-Things you may want to cover:
+bin/dev # necessary to start the app for the first time
+---- or ----
+rails s # can be used after starting the app at least once
+```
 
-* Ruby version
 
-* System dependencies
+### Testing
+- Run `bundle exec rspec spec` to run the tests for this project
+## Authors
 
-* Configuration
+👤 **Luis Fernando Jimenez**
 
-* Database creation
+- GitHub: [@lu-jim](https://github.com/lu-jim)
+- Twitter: [@lujimhe](https://twitter.com/lujimhe)
+- LinkedIn: [@lujim](https://www.linkedin.com/in/lujim/)
 
-* Database initialization
+## 🤝 Contributing
 
-* How to run the test suite
+Contributions, issues, and feature requests are welcome!
 
-* Services (job queues, cache servers, search engines, etc.)
+## Show your support
 
-* Deployment instructions
+Give a ⭐️ if you like this project!
+## Acknowledgments
 
-* ...
+- Microverse for the guidelines used for this project
+- My SO and project manager, Mane
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
