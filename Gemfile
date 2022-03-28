@@ -52,6 +52,8 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 # Other dependencies
+gem 'cancancan'
+gem 'devise'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 group :development, :test do
@@ -73,6 +75,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'rspec-rails', '~> 5.1'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
