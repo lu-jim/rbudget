@@ -13,6 +13,9 @@
   </head>
 
   <body>
+    <header>
+      <%= render partial: "shared/header" %>
+    </header>
     <div class="mx-auto">
       <div class="w-full" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
         <% flash.each do |type, msg| %>
