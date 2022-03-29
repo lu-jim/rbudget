@@ -8,11 +8,31 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <div class="mx-auto">
+      <div class="w-full" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+        <% flash.each do |type, msg| %>
+          <% if type === 'notice' %>
+            <div class="mx-auto bg-green-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'success' %>
+            <div class="mx-auto bg-green-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'fail' %>
+            <div class="mx-auto bg-red-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <main class="container mx-auto mt-6 px-5 flex">
       <%= yield %>
     </main>
   </body>
