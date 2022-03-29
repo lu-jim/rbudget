@@ -3,5 +3,5 @@ class Group < ApplicationRecord
   has_and_belongs_to_many :log_records
 
   validates :name, presence: true
-  validates :image, presence: true
+  validates :icon, presence: true
 end
