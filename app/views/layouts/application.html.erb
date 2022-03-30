@@ -8,11 +8,39 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <% if user_signed_in? || !current_page?(root_path) %>
+      <header>
+      <%= render partial: "shared/header" %>
+      </header>
+    <% end %>
+    <div class="mx-auto">
+      <div class="w-full" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+        <% flash.each do |type, msg| %>
+          <% if type === 'notice' %>
+            <div class="mx-auto bg-green-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'success' %>
+            <div class="mx-auto bg-green-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'fail' %>
+            <div class="mx-auto bg-red-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <main>
       <%= yield %>
     </main>
   </body>

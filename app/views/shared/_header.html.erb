@@ -1,0 +1,61 @@
+<nav
+  class="flex items-center justify-between flex-wrap bg-blue-600 p-4 text-white "
+  x-data="{ isOpen: false }"
+  @keydown.escape="isOpen = false"
+  @click.away="isOpen = false"
+  :class="{ 'shadow-lg bg-snap-main' : isOpen , 'bg-snap-main' : !isOpen}"
+>
+
+  <%= link_to root_path, class: "flex items-center flex-shrink-0 text-white mr-6" do %>
+    <span class="font-semibold text-xl tracking-widest font-body">
+      <% if content_for?(:logo) %>
+        <%= yield :logo %>
+      <% end %>
+    </span>
+  <% end %>
+
+  <span class="font-semibold text-xl uppercase tracking-wider font-body">
+    <% if content_for?(:title) %>
+      <%= yield :title %>
+    <% end %>
+  </span>
+  <div class="block lg:hidden">
+    <button
+        @click="isOpen = !isOpen"
+        type="button"
+        class="block lg:hidden px-2 text-slate-200 hover:text-white focus:outline-none focus:text-white"
+        :class="{ 'transition transform-180': isOpen }"
+      >
+        <svg
+          class="h-6 w-6 fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            x-show="isOpen"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+          />
+          <path
+            x-show="!isOpen"
+            fill-rule="evenodd"
+            d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+          />
+        </svg>
+      </button>
+  </div>
+  <div
+    class="w-full flex-grow lg:flex lg:items-center lg:w-auto"
+    :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }"
+  >
+    <div>
+      <% if user_signed_in? %>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>
+      <% else %>
+        <%= link_to "Sign In", user_session_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
