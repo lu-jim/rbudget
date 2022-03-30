@@ -23,14 +23,14 @@
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+      <div class="flex content-center align-center py-2">
+        <%= f.check_box :remember_me, class:'border rounded mr-2 my-auto' %>
+        <%= f.label :remember_me, class: 'text-sm block' %>
       </div>
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log in", class: 'text-sm px-4 py-2 bg-transparent hover:bg-teal-500 text-teal-700 max-w-fit font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded' %>
     </div>
   <% end %>
 
