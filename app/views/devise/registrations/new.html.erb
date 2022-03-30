@@ -16,8 +16,13 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
+      <%= f.label :name, class:'hidden'%>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" , placeholder: 'Full Name', class: 'border border-snap-text/50 shadow rounded my-2'%>
+    </div>
+
+    <div class="field">
       <%= f.label :email, class:'hidden'%>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: 'Email', class: 'border border-snap-text/50 shadow rounded my-2'%>
+      <%= f.email_field :email, autocomplete: "email" , placeholder: 'Email', class: 'border border-snap-text/50 shadow rounded my-2'%>
     </div>
 
     <div class="field">
