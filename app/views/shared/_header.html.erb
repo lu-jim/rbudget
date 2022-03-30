@@ -1,12 +1,12 @@
 <nav
-  class="flex items-center justify-between flex-wrap bg-blue-600 p-6"
+  class="flex items-center justify-between flex-wrap bg-blue-600 p-6 text-white "
   x-data="{ isOpen: false }"
   @keydown.escape="isOpen = false"
   @click.away="isOpen = false"
   :class="{ 'shadow-lg bg-snap-main' : isOpen , 'bg-snap-main' : !isOpen}"
 >
   <%= link_to root_path, class: "flex items-center flex-shrink-0 text-white mr-6" do %>
-    <span class="font-semibold text-xl tracking-tight">rBudget</span>
+    <span class="font-semibold text-xl tracking-tight font-body">rBudget</span>
   <% end %>
   <div class="block lg:hidden">
     <button
