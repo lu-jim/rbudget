@@ -1,0 +1,10 @@
+<div class="bg-white text-gray-800 shadow-sm overflow-hidden flex min-w-screen mx-4 mt-4 border rounded-sm">
+  <div class="bg-white px-6 py-5 overflow-y-auto flex justify-between w-full rounded-sm items-center">
+    <span class="flex items-center">
+      <%= image_tag(group.icon, size: "50x50", alt: "Group icon") %>
+      <%= link_to group.name, group_path(group.id), class: "text-lg font-semibold text-snap-text ml-3"%>
+    </span>
+
+    <%= total_transactions(group.log_records)%>
+  </div>
+</div>
