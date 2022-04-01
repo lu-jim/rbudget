@@ -6,8 +6,8 @@ class LogRecordsController < ApplicationController
   end
 
   def index
-    @current_user = current_user
-    @log_records = @current_user.log_records.includes([:author])
+    @user = current_user
+    @log_records = @user.log_records unless @user.nil?
   end
 
   def show

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-user1 = User.create(name: 'Luma')
+user1 = User.create(name: 'Luma', email: 'luma@luma.xyz', password: '123123', password_confirmation: '123123')
 category1 = Group.create(name: 'Groceries', icon: 'test', author: user1)
 category2 = Group.create(name: 'Credit', icon: 'test2', author: user1)
 transaction1 = category1.log_records.create(author: user1, name: 'plaza', amount: 20)

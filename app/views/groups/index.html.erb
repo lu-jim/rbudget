@@ -1,4 +1,20 @@
-<div>
-  <h1 class="font-bold text-4xl">Groups#index</h1>
-  <p>Find me in app/views/groups/index.html.erb</p>
-</div>
+<% content_for(:title) do %>
+  Categories
+<% end %>
+<% content_for(:logo) do %>
+  &#129044;
+<% end %>
+<% content_for(:move) do %>
+  Login
+<% end %>
+<% if user_signed_in? %>
+  <% if @groups.empty? %>
+    <p class="border p-7 border-yellow-400 bg-yellow-200 font-medium">You don't have any Categories.</p>
+  <% else %>
+    <section class="container min-w-screen min-h-full w-full bg-gray-200 flex flex-col justify-start">
+      <%= render @groups %>
+    </section>
+  <% end %>
+<% else %>
+  <%= render 'shared/splash'%>
+<% end %>

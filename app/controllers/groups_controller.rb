@@ -1,9 +1,14 @@
 class GroupsController < ApplicationController
-  load_and_authorize_resource
-  
-  def index; end
+  def new
+    @group = Group.new
+  end
 
-  def show; end
+  def index
+    @user = current_user
+    @groups = @user.groups unless @user.nil?
+  end
 
-  def new; end
+  def show
+    @group = Group.find_by_id(params[:id])
+  end
 end
