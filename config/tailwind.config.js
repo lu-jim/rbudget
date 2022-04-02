@@ -14,6 +14,7 @@ module.exports = {
         'snap-sec': '#60B524',
         'snap-text': '#434C55',
         'snap-title': '#3D4550',
+        'snap-alert': '#EB8258',
       },
     },
   },

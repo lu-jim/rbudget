@@ -1,4 +1,22 @@
-<div>
-  <h1 class="font-bold text-4xl">LogRecords#index</h1>
-  <p>Find me in app/views/log_records/index.html.erb</p>
-</div>
+<% content_for(:title) do %>
+  Transactions
+<% end %>
+<% content_for(:logo) do %>
+  &#129044;
+<% end %>
+
+<% if @log_records.empty? %>
+  <section class="container min-w-screen min-h-full w-full bg-gray-200 flex flex-col justify-between">
+    <div class="justify-start flex flex-col">
+      <p class="border p-7 border-snap-alert/25 bg-snap-alert font-medium text-white text-center">You don't have any Transactions.</p>
+    </div>
+    <%= render 'create_button', class: "container min-w-screen w-full flex min-h-full"%>
+  </section>
+<% else %>
+  <section class="container min-w-screen min-h-full w-full bg-gray-200 flex flex-col justify-between">
+    <div class="justify-start flex flex-col">
+      <%= render @log_records%>
+    </div>
+    <%= render 'create_button', class: "container min-w-screen w-full flex min-h-full"%>
+  </section>
+<% end %>
