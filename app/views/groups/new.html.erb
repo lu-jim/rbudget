@@ -8,6 +8,16 @@
   <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex">
     <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
       <%= form_with model: @group, url: groups_path, local: true do |f| %>
+      <% if @group.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% @group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
         <div class="field">
           <%= f.label :image , class:'hidden'%>
           <%= f.file_field :image , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg" %>
