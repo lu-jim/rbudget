@@ -3,5 +3,6 @@ class Group < ApplicationRecord
   has_and_belongs_to_many :log_records
 
   validates :name, presence: true
-  validates :icon, presence: true
+
+  include ImageUploader::Attachment(:image)
 end

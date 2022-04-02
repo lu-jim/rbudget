@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_212629) do
   create_table "groups", force: :cascade do |t|
     t.bigint "author_id"
     t.string "name"
-    t.string "icon"
+    t.text "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_groups_on_author_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_212629) do
   create_table "log_records", force: :cascade do |t|
     t.bigint "author_id"
     t.string "name"
-    t.decimal "amount"
+    t.decimal "amount", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_log_records_on_author_id"

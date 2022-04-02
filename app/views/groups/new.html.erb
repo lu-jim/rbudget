@@ -9,8 +9,8 @@
     <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
       <%= form_with model: @group, url: groups_path, local: true do |f| %>
         <div class="field">
-          <%= f.label :icon , class:'hidden'%>
-          <%= f.file_field :icon , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg" %>
+          <%= f.label :image , class:'hidden'%>
+          <%= f.file_field :image , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg" %>
         </div>
         <div class="field">
           <%= f.label :name, class:'hidden'%>
