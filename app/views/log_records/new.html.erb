@@ -1,4 +1,36 @@
-<div>
-  <h1 class="font-bold text-4xl">LogRecords#new</h1>
-  <p>Find me in app/views/log_records/new.html.erb</p>
-</div>
+<% content_for(:title) do %>
+  New Transaction
+<% end %>
+<% content_for(:logo) do %>
+  &#129044;
+<% end %>
+<section class="container min-w-screen min-h-screen w-full bg-gray-200 flex flex-col items-center justify-start py-5">
+  <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex">
+    <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
+      <%= form_with model: @log_record, url: log_records_path, local: true do |f| %>
+      <% if @log_record.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@log_record.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% @log_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+        <div class="field">
+          <%= f.label :image , class:'hidden'%>
+          <%= f.file_field :image , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg", required: true%>
+        </div>
+        <div class="field">
+          <%= f.label :name, class:'hidden'%>
+          <%= f.text_field :name, autofocus: true, placeholder: 'Category name', class: 'border border-snap-text/50 shadow rounded my-2 w-full', required: true %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Create", class: 'text-sm px-4 py-2 bg-snap-main hover:bg-teal-500 text-white max-w-fit font-semibold hover:text-white border border-snap-main/500 hover:border-transparent rounded' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

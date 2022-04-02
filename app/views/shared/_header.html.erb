@@ -1,5 +1,5 @@
 <nav
-  class="flex items-center justify-between flex-wrap bg-blue-600 p-4 text-white "
+  class="flex items-center justify-between flex-wrap bg-snap-main p-4 text-white "
   x-data="{ isOpen: false }"
   @keydown.escape="isOpen = false"
   @click.away="isOpen = false"
@@ -46,12 +46,16 @@
       </button>
   </div>
   <div
-    class="w-full flex-grow lg:flex lg:items-center lg:w-auto"
-    :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }"
+    class="absolute inset-0 transform lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-60 bg-snap-main text-white h-screen p-3"
+            :class="{'translate-x-0 ease-in opacity-100': isOpen, '-translate-x-full ease-out opacity-0': !isOpen }"
   >
-    <div>
+    <div class="grid grid-cols-1 divide-y mt-10">
       <% if user_signed_in? %>
-        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>
+      <h1><%= current_user.name%></h1>
+
+        <%= link_to "Categories",@groups_path, class: "p-4"%>
+        <%= link_to "All Transactions",@log_records_path, class: "p-4"%>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"p-4" %>
       <% else %>
         <%= link_to "Sign In", user_session_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>
         <%= link_to "Sign Up", new_user_registration_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0" %>

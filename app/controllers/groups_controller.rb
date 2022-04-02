@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_id(params[:id])
+    @log_records = @group.log_records.order(created_at: :desc)
   end
 
   def create
