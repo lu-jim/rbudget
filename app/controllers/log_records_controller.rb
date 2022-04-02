@@ -1,41 +1,51 @@
 class LogRecordsController < ApplicationController
   def new
-    @user = current_user
-    @groups = @user.groups
+    @groups = current_user.groups
     @log_record = LogRecord.new
   end
 
   def index
-    @user = current_user
-    @log_records = @user.log_records unless @user.nil?
+    @log_records = current_user.log_records unless current_user.nil?
   end
 
   def show
-    @current_user = current_user
-    @log_record = @current_user.log_record.find(params[:log_record_id])
+    @log_record = current_user.log_record.find(params[:log_record_id])
   end
 
   def create
-    @user = current_user
-    @log_record = @user.log_records.new(log_record_params)
-    if @group.save
-      redirect_to groups_path, flash: { success: 'Transaction created successfully.' }
+    @group = Group.find_by_id(params[:group_id])
+    @groups = current_user.groups
+
+    if params[:groups].nil?
+      flash[:fail] = 'Please select at least 1 category'
+      return redirect_to new_log_record_path(group_id: @group)
+    end
+
+    @log_record = current_user.log_records.new(log_record_params)
+
+    if @log_record.save
+      sanitized_params = params[:groups].reject(&:empty?)
+      sanitized_params.each do |g|
+        @log_record.groups << Group.find(g)
+      end
+      redirect_to group_path(@group), flash: { success: 'Transaction created successfully.' }
     else
-      render :new, flash: { danger: @log_record.errors.messages }
+      redirect_to new_group_path(group_id: @group), flash: { fail: @log_record.errors.messages }
     end
   end
 
   def destroy
-    @user = current_user
-    @group = @user.groups.new(group_params)
-    if @group.save
+    @log_record = current_user.groups.new(group_params)
+    if @log_record.save
       redirect_to groups_path, flash: { success: 'Group created successfully.' }
     else
-      render :new, flash: { danger: @group.errors.messages }
+      render :new, flash: { fail: @group.errors.messages }
     end
   end
 
-  def group_params
-    params.require(:group).permit(:name, :amount, :groups)
+  private
+
+  def log_record_params
+    params.require(:log_record).permit(:name, :amount)
   end
 end

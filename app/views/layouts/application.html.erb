@@ -29,18 +29,19 @@
       </header>
     <% end %>
     <div class="mx-auto">
-      <div class="w-full" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+      <div class="w-full z-10" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
         <% flash.each do |type, msg| %>
           <% if type === 'notice' %>
-            <div class="mx-auto bg-snap-sec text-white">
+            <div class="mx-auto bg-snap-sec text-white ">
               <p class="container mx-auto py-3 px-10"><%= msg %></p>
             </div>
           <% elsif type === 'success' %>
-            <div class="mx-auto bg-snap-sec">
+            <div class="mx-auto bg-snap-sec text-white z-10">
               <p class="container mx-auto py-3 px-10"><%= msg %></p>
             </div>
           <% elsif type === 'fail' %>
-            <div class="mx-auto bg-snap-alert">
+            <div class="mx-auto bg-snap-alert text-white">
+            <%= params.inspect %>
               <p class="container mx-auto py-3 px-10"><%= msg %></p>
             </div>
           <% end %>

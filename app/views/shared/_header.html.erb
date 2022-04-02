@@ -46,8 +46,8 @@
       </button>
   </div>
   <div
-    class="absolute inset-0 transform lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-60 bg-snap-main text-white h-screen p-3"
-            :class="{'translate-x-0 ease-in opacity-100': isOpen, '-translate-x-full ease-out opacity-0': !isOpen }"
+    class="absolute inset-0 transform duration-200 z-10 w-60 bg-snap-main text-white h-screen p-3"
+            :class="{ '-translate-x-full ease-out opacity-0': !isOpen, 'translate-x-0 ease-in opacity-100': isOpen }"
   >
     <div class="grid grid-cols-1 divide-y mt-10">
       <% if user_signed_in? %>
