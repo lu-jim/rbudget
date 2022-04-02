@@ -20,11 +20,11 @@
   <% end %>
         <div class="field">
           <%= f.label :image , class:'hidden'%>
-          <%= f.file_field :image , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg" %>
+          <%= f.file_field :image , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg", required: true%>
         </div>
         <div class="field">
           <%= f.label :name, class:'hidden'%>
-          <%= f.text_field :name, autofocus: true, placeholder: 'Category name', class: 'border border-snap-text/50 shadow rounded my-2 w-full' %>
+          <%= f.text_field :name, autofocus: true, placeholder: 'Category name', class: 'border border-snap-text/50 shadow rounded my-2 w-full', required: true %>
         </div>
 
         <div class="actions">
