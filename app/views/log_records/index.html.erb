@@ -11,14 +11,14 @@
         <div class="justify-start flex flex-col">
           <p class="border p-7 border-snap-alert/25 bg-snap-alert font-medium text-white">You don't have any Categories.</p>
         </div>
-        <%= render 'create_button', class: "container min-w-screen w-full flex min-h-full"%>
+        <%= render 'shared/create_button', class: "container min-w-screen w-full flex min-h-full"%>
       </section>
     <% else %>
       <section class="container min-w-screen min-h-full w-full bg-gray-200 flex flex-col justify-between">
         <div class="justify-start flex flex-col">
           <%= render @groups%>
         </div>
-        <%= render 'create_button', class: "container min-w-screen w-full flex min-h-full"%>
+        <%= render 'shared/create_button', class: "container min-w-screen w-full flex min-h-full"%>
       </section>
     <% end %>
   <% else %>

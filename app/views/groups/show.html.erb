@@ -8,15 +8,15 @@
 <% if @log_records.empty? %>
   <section class="container min-w-screen min-h-full w-full bg-gray-200 flex flex-col justify-between">
     <div class="justify-start flex flex-col">
-      <p class="border p-7 border-snap-alert/25 bg-snap-alert font-medium text-white text-center">You don't have any Transactions.</p>
+      <p class="border p-7 border-snap-alert/25 bg-snap-alert font-medium text-white text-center">No Transactions for "<%= @group.name %>"</p>
     </div>
-    <%= render 'create_button', class: "container min-w-screen w-full flex min-h-full"%>
+    <%= render 'shared/create_record', class: "container min-w-screen w-full flex min-h-full"%>
   </section>
 <% else %>
   <section class="container min-w-screen min-h-full w-full bg-gray-200 flex flex-col justify-between">
     <div class="justify-start flex flex-col">
       <%= render @log_records%>
     </div>
-    <%= render 'create_button', class: "container min-w-screen w-full flex min-h-full"%>
+    <%= render 'shared/create_record', class: "container min-w-screen w-full flex min-h-full"%>
   </section>
 <% end %>

@@ -1,5 +1,7 @@
 class LogRecordsController < ApplicationController
   def new
+    @user = current_user
+    @groups = @user.groups
     @log_record = LogRecord.new
   end
 
@@ -34,6 +36,6 @@ class LogRecordsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :image)
+    params.require(:group).permit(:name, :amount, :groups)
   end
 end

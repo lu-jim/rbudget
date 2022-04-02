@@ -51,7 +51,7 @@
   >
     <div class="grid grid-cols-1 divide-y mt-10">
       <% if user_signed_in? %>
-      <h1><%= current_user.name%></h1>
+      <h1 class="py-8 px-4 uppercase font-black text-lg"><%= current_user.name%></h1>
 
         <%= link_to "Categories",@groups_path, class: "p-4"%>
         <%= link_to "All Transactions",@log_records_path, class: "p-4"%>

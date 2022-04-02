@@ -8,25 +8,34 @@
   <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex">
     <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
       <%= form_with model: @log_record, url: log_records_path, local: true do |f| %>
-      <% if @log_record.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@log_record.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
-        <% @log_record.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% if @log_record.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@log_record.errors.count, "error") %> prohibited this post from being saved:</h2>
+            <ul>
+              <% @log_record.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-        <div class="field">
-          <%= f.label :image , class:'hidden'%>
-          <%= f.file_field :image , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg", required: true%>
-        </div>
         <div class="field">
           <%= f.label :name, class:'hidden'%>
-          <%= f.text_field :name, autofocus: true, placeholder: 'Category name', class: 'border border-snap-text/50 shadow rounded my-2 w-full', required: true %>
+          <%= f.text_field :name, autofocus: true, placeholder: 'Transaction', class: 'border border-snap-text/50 shadow rounded my-2 w-full', required: true %>
         </div>
-
+        <div class="field">
+          <%= f.label :amount, class:'hidden'%>
+          <%= f.number_field :amount, placeholder: 'Amount', min: 0, max: 999999, class: 'border border-snap-text/50 shadow rounded my-2 w-full focus:ring-indigo-500 focus:border-indigo-500', required: true %>
+        </div>
+        <div>
+          <%= f.select :groups, options_from_collection_for_select(@groups, "id", "name"), {}, {class: "border rounded block w-full form-multiselect my-4", multiple: true } %>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+        <script>
+          new TomSelect('#log_record_groups', {
+           placeholder: "Groups",
+           hidePlaceholder: true,
+          });
+        </script>
         <div class="actions">
           <%= f.submit "Create", class: 'text-sm px-4 py-2 bg-snap-main hover:bg-teal-500 text-white max-w-fit font-semibold hover:text-white border border-snap-main/500 hover:border-transparent rounded' %>
         </div>
