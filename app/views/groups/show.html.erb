@@ -1,0 +1,23 @@
+<% content_for(:title) do %>
+  Transactions
+<% end %>
+<% content_for(:logo) do %>
+  &#129044;
+<% end %>
+
+<% if @log_records.empty? %>
+  <section class="container min-w-screen min-h-full w-full bg-gray-200 flex flex-col justify-between">
+    <div class="justify-start flex flex-col">
+      <p class="border p-7 border-snap-alert/25 bg-snap-alert font-medium text-white text-center">No Transactions for "<%= @group.name %>"</p>
+    </div>
+    <%= render 'shared/create_record', class: "container min-w-screen w-full flex min-h-full"%>
+  </section>
+<% else %>
+  <section class="w-full bg-gray-200 flex flex-col justify-between h-full">
+    <div class="justify-between flex flex-col overflow-y-auto">
+      <%= render 'group_total', group: @group %>
+      <%= render @log_records , group: @group%>
+    </div>
+    <%= render 'shared/create_record', class: "container min-w-screen w-full flex min-h-full"%>
+  </section>
+<% end %>

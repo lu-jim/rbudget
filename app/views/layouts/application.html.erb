@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rbudget</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="antialiased min-h-screen overflow-hidden">
+    <% if user_signed_in? || !current_page?(root_path) %>
+      <header>
+      <%= render partial: "shared/header" %>
+      </header>
+    <% end %>
+    <div class="mx-auto">
+      <div class="w-full z-10" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+        <% flash.each do |type, msg| %>
+          <% if type === 'notice' %>
+            <div class="mx-auto bg-snap-sec text-white ">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'success' %>
+            <div class="mx-auto bg-snap-sec text-white z-10">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'fail' %>
+            <div class="mx-auto bg-snap-alert text-white">
+            <%= params.inspect %>
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <main class="mx-auto" , style="height: calc(100vh - 3.75rem)">
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<% content_for(:title) do %>
+    Categories
+  <% end %>
+  <% content_for(:logo) do %>
+    &#129044;
+  <% end %>
+  <% content_for(:move) do %>
+    Login
+  <% end %>
+  <% if user_signed_in? %>
+    <% if @groups.empty? %>
+      <section class="w-full bg-gray-200 flex flex-col justify-between">
+        <div class="justify-start flex flex-col">
+          <p class="border p-7 border-snap-alert/25 bg-snap-alert font-medium text-white">You don't have any Categories.</p>
+        </div>
+        <%= render 'shared/create_group', class: "container min-w-screen w-full flex min-h-full"%>
+      </section>
+    <% else %>
+      <section class="w-full bg-gray-200 flex flex-col justify-between h-full">
+        <div class="justify-start flex flex-col">
+          <%= render @groups%>
+        </div>
+        <%= render 'shared/create_group', class: "container min-w-screen w-full flex min-h-full"%>
+      </section>
+    <% end %>
+  <% else %>
+    <%= render 'shared/splash'%>
+  <% end %>

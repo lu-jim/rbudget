@@ -1,0 +1,36 @@
+<% content_for(:title) do %>
+  New Category
+<% end %>
+<% content_for(:logo) do %>
+  &#129044;
+<% end %>
+<section class="w-full bg-gray-200 flex flex-col items-center justify-start h-full">
+  <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex m-10 w-full">
+    <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
+      <%= form_with model: @group, url: groups_path, local: true do |f| %>
+      <% if @group.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% @group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+        <div class="field">
+          <%= f.label :image , class:'hidden'%>
+          <%= f.file_field :image , class: 'border border-snap-text/50 rounded mt-2 w-full shadow', accept: "image/png, image/jpeg", required: true%>
+        </div>
+        <div class="field">
+          <%= f.label :name, class:'hidden'%>
+          <%= f.text_field :name, autofocus: true, placeholder: 'Category name', class: 'border border-snap-text/50 shadow rounded my-2 w-full', required: true %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Create", class: 'text-sm px-4 py-2 bg-snap-main hover:bg-teal-500 text-white max-w-fit font-semibold hover:text-white border border-snap-main/500 hover:border-transparent rounded' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

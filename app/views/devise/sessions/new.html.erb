@@ -1,0 +1,38 @@
+<% content_for(:title) do %>
+  Login
+<% end %>
+<% content_for(:logo) do %>
+  &#129044;
+<% end %>
+<% content_for(:move) do %>
+  Login
+<% end %>
+<section class="container min-w-screen min-h-screen w-full bg-gray-200 flex flex-col items-center justify-start py-5">
+  <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex">
+    <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email, class:'hidden'%>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'border border-snap-text/50 shadow rounded my-2' %>
+        </div>
+        <div class="field">
+          <%= f.label :password, class:'hidden'%>
+          <%= f.password_field :password, autocomplete: "current-password",  placeholder: 'Password' , class: 'border border-snap-text/50 shadow rounded my-2' %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="flex content-center align-center py-2">
+            <%= f.check_box :remember_me, class:'border rounded mr-2 my-auto' %>
+            <%= f.label :remember_me, class: 'text-sm block' %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "Log in", class: 'text-sm px-4 py-2 bg-snap-main hover:bg-teal-500 text-white max-w-fit font-semibold hover:text-white border border-snap-main/500 hover:border-transparent rounded' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="flex flex-col items-center mt-10">
+    <%= link_to "Sign up", new_registration_path(resource_name), class: "inline-block text-sm py-1 font-semibold text-snap-text/50"%>
+    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "inline-block text-sm font-semibold text-snap-text/50" %>
+  </div>
+</section>

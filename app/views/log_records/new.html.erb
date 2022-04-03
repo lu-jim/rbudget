@@ -1,0 +1,46 @@
+<% content_for(:title) do %>
+  New Transaction
+<% end %>
+<% content_for(:logo) do %>
+  &#129044;
+<% end %>
+<section class="w-full bg-gray-200 flex flex-col items-center justify-start h-full">
+  <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex m-10 w-full">
+    <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
+      <%= form_with model: @log_record, url: log_records_path, local: true do |f| %>
+        <% if @log_record.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@log_record.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+            <ul>
+              <% @log_record.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field">
+          <%= f.label :name, class:'hidden'%>
+          <%= f.text_field :name, autofocus: true, placeholder: 'Transaction', class: 'border border-snap-text/50 shadow rounded my-2 w-full' %>
+        </div>
+        <div class="field">
+          <%= f.label :amount, class:'hidden'%>
+          <%= f.number_field :amount, placeholder: 'Amount', min: 0, max: 999999, value: '', class: 'border border-snap-text/50 shadow rounded my-2 w-full focus:ring-indigo-500 focus:border-indigo-500' %>
+        </div>
+        <div>
+
+            <div class="checkboxes mb-2">
+            <%- current_user.groups.each do |group| %>
+              <%= check_box_tag "groups[]", group.id %>
+              <%= f.label group.name %>
+            <% end ;nil %>
+            </div>
+
+        </div>
+        <%= hidden_field_tag :group_id, params[:group_id] %>
+        <div class="actions">
+          <%= f.submit "Create", class: 'text-sm px-4 py-2 bg-snap-main hover:bg-teal-500 text-white max-w-fit font-semibold hover:text-white border border-snap-main/500 hover:border-transparent rounded' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
