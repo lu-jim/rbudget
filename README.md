@@ -9,6 +9,9 @@ that allows the user to:
 - Ruby
 - Rails
 - Tailwind
+
+## Live version
+https://boiling-tor-63704.herokuapp.com
 ## Getting Started
 To get a local copy up and running follow these simple steps.
 ### Prerequisites
@@ -56,6 +59,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse for the guidelines used for this project
+- Original design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella).
 - My SO and project manager, Mane
 ## 📝 License
 
