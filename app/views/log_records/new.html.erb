@@ -29,7 +29,10 @@
         <div>
 
             <div class="checkboxes">
-            <%= f.collection_select :groups, @groups, :id, :name, {:}%>
+            <%= @groups.each do |group|%>
+              <%= check_box_tag "groups[]", group.id %>
+              <%= f.label group.name %>
+              <% end %>
             </div>
 
         </div>
