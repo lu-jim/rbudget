@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_id(params[:id])
+    @log_records = @group.log_records.order(created_at: :desc)
   end
 
   def create
@@ -18,7 +19,7 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to groups_path, flash: { success: 'Group created successfully.' }
     else
-      render :new, flash: { danger: @group.errors.messages }
+      render :new, flash: { fail: @group.errors.messages }
     end
   end
 
@@ -28,7 +29,7 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to groups_path, flash: { success: 'Group created successfully.' }
     else
-      render :new, flash: { danger: @group.errors.messages }
+      render :new, flash: { fail: @group.errors.messages }
     end
   end
 
