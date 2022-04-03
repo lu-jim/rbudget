@@ -19,11 +19,11 @@
       <%= yield :title %>
     <% end %>
   </span>
-  <div class="block lg:hidden">
+  <div class="block ">
     <button
         @click="isOpen = !isOpen"
         type="button"
-        class="block lg:hidden px-2 text-slate-200 hover:text-white focus:outline-none focus:text-white"
+        class="block px-2 text-slate-200 hover:text-white focus:outline-none focus:text-white"
         :class="{ 'transition transform-180': isOpen }"
       >
         <svg
