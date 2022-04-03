@@ -4,8 +4,8 @@ require 'shrine/storage/memory'
 
 Shrine.storages = if Rails.env.test?
                     {
-                      cache: Shrine::Memory.new,
-                      store: Shrine::Memory.new
+                      cache: Shrine::Storage::Memory.new,
+                      store: Shrine::Storage::Memory.new
                     }
                   else
                     {
