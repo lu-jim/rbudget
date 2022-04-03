@@ -27,12 +27,11 @@
           <%= f.number_field :amount, placeholder: 'Amount', min: 0, max: 999999, value: '', class: 'border border-snap-text/50 shadow rounded my-2 w-full focus:ring-indigo-500 focus:border-indigo-500' %>
         </div>
         <div>
-          <%= @groups.each do |group|%>
+
             <div class="checkboxes">
-              <%= check_box_tag "groups[]", group.id %>
-              <%= f.label group.name %>
+            <%= f.collection_select :groups, @groups, :id, :name, {:}%>
             </div>
-          <% end %>
+
         </div>
         <%= hidden_field_tag :group_id, params[:group_id] %>
         <div class="actions">
