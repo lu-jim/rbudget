@@ -28,11 +28,11 @@
         </div>
         <div>
 
-            <div class="checkboxes">
-            <%= @groups.each do |group|%>
+            <div class="checkboxes mb-2">
+            <%- current_user.groups.each do |group| %>
               <%= check_box_tag "groups[]", group.id %>
               <%= f.label group.name %>
-              <% end %>
+            <% end ;nil %>
             </div>
 
         </div>
