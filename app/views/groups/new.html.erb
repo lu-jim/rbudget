@@ -4,8 +4,8 @@
 <% content_for(:logo) do %>
   &#129044;
 <% end %>
-<section class="container min-w-screen min-h-screen w-full bg-gray-200 flex flex-col items-center justify-start py-5">
-  <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex">
+<section class="w-full bg-gray-200 flex flex-col items-center justify-start h-full">
+  <div class="bg-white text-gray-800 shadow-lg overflow-hidden flex m-10 w-full">
     <div class="bg-white h-full w-full px-5 pt-6 pb-20 overflow-y-auto">
       <%= form_with model: @group, url: groups_path, local: true do |f| %>
       <% if @group.errors.any? %>
