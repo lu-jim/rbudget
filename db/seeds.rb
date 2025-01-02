@@ -7,8 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 user1 = User.create(name: 'Luma', email: 'luma@luma.xyz', password: '123123', password_confirmation: '123123')
-category1 = Group.create(name: 'Groceries',
-                         image_data: '', author: user1)
-category2 = Group.create(name: 'Credit', image_data: '', author: user1)
+category1 = Group.create(name: 'Groceries', author: user1)
+category2 = Group.create(name: 'Credit', author: user1)
 transaction1 = category1.log_records.create(author: user1, name: 'plaza', amount: 20)
 transaction1.groups.push(category2)
