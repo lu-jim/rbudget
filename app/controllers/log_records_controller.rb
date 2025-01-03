@@ -27,9 +27,9 @@ class LogRecordsController < ApplicationController
       sanitized_groups.each do |g|
         @log_record.groups << Group.find(g)
       end
-      redirect_to group_path(@group), flash: { success: 'Transaction created successfully.' }
+      redirect_to log_records_path, flash: { success: 'Transaction created successfully.' }
     else
-      redirect_to new_group_path(group_id: @group), flash: { fail: @log_record.errors.messages }
+      redirect_to new_log_record_path(group_id: @group), flash: { fail: @log_record.errors.messages }
     end
   end
 
